@@ -12,7 +12,7 @@ $(document).ready(function() {
     var screenHeight = window.outerHeight;
 
     var logo = $("#logo");
-    var logo_width = pageWidth * 0.25;
+    var logo_width = pageWidth * 0.35;
     //logo.css("height", parseInt(pageHeight * 0.4) + "px");
     logo.css("width", parseInt(logo_width) + "px");
     logo.css("height", "auto");
@@ -49,8 +49,12 @@ function Contents(elem, initial_page, final_page, initial_pos, final_pos, img_wi
 	this.elem = elem;
 	this.elem.style.top = parseInt(this.begining[0]) + "px";
 	this.elem.style.left = parseInt(this.begining[1]) + "px";
-	this.elem.style.width = img_width + "px";
-	this.elem.style.height = "auto";
+	
+	var pad = img_width * 0.2;
+	this.elem.style.padding = pad + "px";
+	this.elem.style.width = img_width - pad + "px";
+	//this.elem.style.height = "auto";
+	this.elem.style.height = img_width - pad + "px";
 	
 	this.scrolling = function(scrollx) {
 		this.out();
