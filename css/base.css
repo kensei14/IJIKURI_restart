@@ -1,0 +1,94 @@
+@charset "utf-8";
+/* CSS Document */
+
+.clearfix:after { content: ""; display: block; clear: both; }
+
+/* 背景 */
+#img01 { z-index: 100; }
+#img02_01 { z-index: 9; }
+#img02_02 { z-index: 8; }
+#img02_03 { z-index: 7; }
+#img03_01 { z-index: 6; }
+#img03_02 { z-index: 5; }
+#img03_03 { z-index: 4; }
+
+#elem1 { z-index: 50; }
+#elem2 { z-index: 50; }
+#elem3 { z-index: 50; }
+#elem4 { z-index: 50; }
+
+#global_container {
+	z-index: 150;
+	position: relative;
+	display: none;
+	
+	height:10000px;
+}
+
+#logo {
+	position: fixed;
+	display:block;
+	margin: 200 auto 0;
+}
+
+#myheader {
+  z-index: 151;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  
+  width: 100%;
+  height: 50px;
+  background-image: url("../src/menubar3.png");
+  background-repeat: repeat-x;
+  /*background-color: black;*/
+}
+
+#menubar {
+  width: 70%;
+  padding: 15px;
+  margin: 0 auto 0;
+}
+
+#ich {
+	float: left;
+}
+.ich_img {
+	height: 20px;
+	float: left;
+}
+
+.menu_img {
+  height: 13px;
+}
+
+.headerChild {
+  float:right;
+  margin: 0 40px 0 0;
+}
+
+.headerChild a{
+  font-size: 15pt;
+  color: white;
+  text-decoration: none;
+}
+
+img.bg {
+  position: fixed;
+  /* またはabsolute; */
+  top: 0;
+  left: 0;
+  
+  min-height: auto;
+  min-width: 100%;
+  height: 100%;
+  width: auto;
+}
+
+.contents {
+	position: absolute;
+	display: block;
+
+	left: 500px;
+}
