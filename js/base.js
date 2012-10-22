@@ -47,14 +47,22 @@ function Contents(elem, initial_page, final_page, initial_pos, final_pos, img_wi
 	this.begining[1] = this.initial_pos[1];
 	
 	this.elem = elem;
+	this.elem = elem;
 	this.elem.style.top = parseInt(this.begining[0]) + "px";
 	this.elem.style.left = parseInt(this.begining[1]) + "px";
 	
 	var pad = img_width * 0.2;
 	this.elem.style.padding = pad + "px";
 	this.elem.style.width = img_width - pad + "px";
-	//this.elem.style.height = "auto";
-	this.elem.style.height = img_width - pad + "px";
+	this.elem.style.height = "auto";
+	//this.elem.style.height = img_width - pad + "px";
+	
+	var fChild = this.elem.childNodes;
+	//var fChild = this.elem.getChildren();
+	//this.elem.firstChild.style.width = 500 + "px";
+	//console.log(this.elem.childNodes[0]);
+	console.log(fChild[0].nodeValue);
+	//console.log(fChild.style.width);
 	
 	this.scrolling = function(scrollx) {
 		this.out();
@@ -144,6 +152,7 @@ function setData(w, h) {
 	obj4 = new Contents(document.getElementById("elem4"), 3500, 4500, [800,  parseInt(w*0.50)], [500,  parseInt(w*0.50)], parseInt(w*0.3));
 }
 
+//背景のフェード値
 var fadeData =  [
 	[500, false, "#img01"],
 	[1000, false, "#img02_01"],

@@ -93,6 +93,7 @@ img.bg {
 	left: 500px;
 	background-image: url("../src/white_bg.png");
 	background-size : contain;
+	background-repeat : no-repeat;
 	
 	border : 1px solid black;
 }
