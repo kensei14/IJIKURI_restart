@@ -13,11 +13,14 @@ $(document).ready(function() {
 
     var logo = $("#logo");
     var logo_width = pageWidth * 0.35;
+
     //logo.css("height", parseInt(pageHeight * 0.4) + "px");
-    logo.css("width", parseInt(logo_width) + "px");
-    logo.css("height", "auto");
-    logo.css("left", parseInt(pageWidth/2 - logo_width/2) + "px");
-    logo.css("top", parseInt(pageHeight * 0.2) + "px");
+    logo.css({
+    	width: parseInt(logo_width) + "px",
+    	height: "auto",
+    	left: parseInt(pageWidth/2 - logo_width/2) + "px",
+    	top: parseInt(pageHeight * 0.2) + "px"
+    });
 	
     var a_elems = document.getElementsByTagName("a");
     for(var i=0; i < a_elems.length; i++) {
@@ -47,36 +50,43 @@ function Contents(elem, initial_page, final_page, initial_pos, final_pos, img_wi
 	this.begining[1] = this.initial_pos[1];
 	
 	this.elem = elem;
-	this.elem = elem;
-	this.elem.style.top = parseInt(this.begining[0]) + "px";
-	this.elem.style.left = parseInt(this.begining[1]) + "px";
-	
+
 	var pad = img_width * 0.2;
-	this.elem.style.padding = pad + "px";
-	this.elem.style.width = img_width - pad + "px";
-	this.elem.style.height = "auto";
-	//this.elem.style.height = img_width - pad + "px";
+	this.elem.css({
+		top: parseInt(this.begining[0]) + "px",
+		left: parseInt(this.begining[1]) + "px",
+		
+		padding: pad + "px",
+		width: img_width - pad + "px",
+		height: "auto",
+		border: "1px solid black"		
+	});
 	
-	var fChild = this.elem.childNodes;
-	//var fChild = this.elem.getChildren();
-	//this.elem.firstChild.style.width = 500 + "px";
-	//console.log(this.elem.childNodes[0]);
-	console.log(fChild[0].nodeValue);
-	//console.log(fChild.style.width);
+	//子要素の幅・高さ指定
+	var c = this.elem.children();
+	//var c_size = parseInt(c.css("width").replace("px", "")) * 0.75;
+	var c_size = img_width - (2 * pad);
+	c.css({
+		width: c_size + "px",
+		height: c_size + "px",
+		border: "1px solid red"
+	});
 	
 	this.scrolling = function(scrollx) {
 		this.out();
 		this.current[0] = this.begining[0] + (this.speed[0] * scrollx);
 		this.current[1] = this.begining[1] + (this.speed[1] * scrollx);
 		
-		this.elem.style.top = parseInt(this.current[0]) + "px";
-		this.elem.style.left = parseInt(this.current[1]) + "px";
+		this.elem.css({
+			top: parseInt(this.current[0]) + "px",
+			left: parseInt(this.current[1]) + "px"
+		});
 	}
 	
 	this.out = function() {
 		var str = "";
-		str += "  top=" + this.elem.style.top + "  ";
-		str += "  left=" +  this.elem.style.left + "  ";
+		str += "  top=" + this.elem.css("top") + "  ";
+		str += "  left=" +  this.elem.css("left") + "  ";
 		str += "  scroll=" + pre_scroll;
 		str += "  initial_pos=" + this.initial_pos[0] + "  ";
 		str += "  initial_pos=" + this.final_pos[0] + "  ";
@@ -146,10 +156,10 @@ function scrollToAnchor(event) {
 
 var obj1, obj2, obj3, obj4;
 function setData(w, h) {
-	obj1 = new Contents(document.getElementById("elem1"), 500, 1500, [300, parseInt(w*0.15)], [0,  parseInt(w*0.15)], parseInt(w*0.36));
-	obj2 = new Contents(document.getElementById("elem2"), 500, 1500, [700,  parseInt(w*0.36)], [300,  parseInt(w*0.36)], parseInt(w*0.5));
-	obj3 = new Contents(document.getElementById("elem3"), 3500, 4500, [500,  parseInt(w*0.12)], [0,  parseInt(w*0.12)], parseInt(w*0.5));
-	obj4 = new Contents(document.getElementById("elem4"), 3500, 4500, [800,  parseInt(w*0.50)], [500,  parseInt(w*0.50)], parseInt(w*0.3));
+	obj1 = new Contents($("#elem1"), 500, 1500, [300, parseInt(w*0.15)], [0,  parseInt(w*0.15)], parseInt(w*0.36));
+	obj2 = new Contents($("#elem2"), 500, 1500, [700,  parseInt(w*0.36)], [300,  parseInt(w*0.36)], parseInt(w*0.5));
+	obj3 = new Contents($("#elem3"), 3500, 4500, [500,  parseInt(w*0.12)], [0,  parseInt(w*0.12)], parseInt(w*0.5));
+	obj4 = new Contents($("#elem4"), 3500, 4500, [800,  parseInt(w*0.50)], [500,  parseInt(w*0.50)], parseInt(w*0.3));
 }
 
 //背景のフェード値
