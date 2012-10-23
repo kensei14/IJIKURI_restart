@@ -32,7 +32,87 @@ $(document).ready(function() {
     $("#img01").ready(function() {
 		$("#global_container").fadeTo(2000, 1.0, function() { });
     });
+    
+    	//select all the a tag with name equal to modal
+	$('a[name=modal]').click(function(e) {
+	  e.preventDefault();
+
+	  var sizing = modal_sizing();
+	
+	  $('#mask').fadeIn(1000);	
+	  $('#mask').fadeTo("slow",0.7);
+          
+  	  var id = $(this).attr('href');
+  	  $(id).css({
+  	  	height: sizing.modalHeight + "px",
+  	  	width: sizing.modalWidth + "px",
+	    top: (sizing.winHeight - sizing.modalHeight) / 2 + "px",
+	    left: (sizing.winWidth - sizing.modalWidth) / 2 + "px"
+	  });
+	  
+	  var list = [];
+	  if (id == "#dialog2") {
+	  	var c = $("#dialog2 .content");
+	  	var side = $("#dialog2 .sidebar");
+	  	
+	  	for (var i=0; i < portfolio.length; i++) {
+	  		var new_img = $("<img style='overflow: hidden; display: none; ' />");
+	  		new_img.attr("src", portfolio[i][0]);
+	  		list[i] = new_img;
+	  	}
+	  	
+		$(id).fadeIn(2000, function() {  	
+		  	for (var i=0; i < list.length; i++) {
+		  		side.append(list[i]);
+				list[i].attr("width", side.width());
+				list[i].fadeIn(1000);
+		  	}
+		});
+	  }
+	});
+	
+	$('.window .close').click(function (e) {
+		e.preventDefault();
+		$('#mask').hide();
+		$('.window').hide();
+	});		
+	
+	$('#mask').click(function () {
+		$(this).hide();
+		$('.window').hide();
+	});
+	
+	$(window).resize(function () {
+	 
+	 	var sizing = modal_sizing();
+ 		var box = $('#boxes .window');
+	 	
+	  box.css({
+  	  	height: sizing.modalHeight + "px",
+  	  	width: sizing.modalWidth + "px",
+	    top: (sizing.winHeight - sizing.modalHeight) / 2 + "px",
+	    left: (sizing.winWidth - sizing.modalWidth) / 2 + "px"
+	  });
+	});
 });
+
+//モーダル・ウィンドウのサイズを返してくれる。
+function modal_sizing() {
+	$("#mask").css({
+	  width: $(document).width(),
+	  height: $(window).height()
+  	});
+  	
+	var h_rate = 0.8,
+		w_rate = 0.6;
+	return {
+		winHeight: $(document).height(),
+		winWidth: $(window).width(),
+		modalHeight: parseInt($(document).height() * h_rate),
+		modalWidth: parseInt($(window).width() * w_rate)
+	}
+	
+}
 
 function Contents(elem, initial_page, final_page, initial_pos, final_pos, img_width) {
 	this.initial_page = initial_page;
@@ -73,7 +153,7 @@ function Contents(elem, initial_page, final_page, initial_pos, final_pos, img_wi
 	});
 	
 	this.scrolling = function(scrollx) {
-		this.out();
+		//this.out();
 		this.current[0] = this.begining[0] + (this.speed[0] * scrollx);
 		this.current[1] = this.begining[1] + (this.speed[1] * scrollx);
 		
@@ -105,22 +185,22 @@ window.onscroll = function() {
 		for(var i=1; i < fadeData.length; i++) {
 			if ((scroll > fadeData[i][0]) && !fadeData[i][1]) {
 		    	fadeData[i][1] = true;
-				$(fadeData[i][2]).fadeTo(1000, 0.0, function() { }) ;
+				$(fadeData[i][2]).fadeTo(1000, 0.0, function() { $(this).css({display: "none"}); });
 			}
 		}
 
 		if ((scroll > fadeData[0][0]) && !fadeData[0][1]) {
 	    	fadeData[0][1] = true;
 			//$(fadeData[0][2]).fadeTo(1000, 0.0, function() { $("#myheader").slideDown(10000); }) ;
-			$("#logo").fadeTo(1000, 0.0, function() {});
-			$(fadeData[0][2]).fadeTo(1000, 0.0, function() { $("#myheader").slideDown('normal', 'swing'); }); //なぜかcssで min-width, min-heightを指定すると動かない。
+			$("#logo").fadeTo(1000, 0.0, function() { $("#global_container").css({display: "none"}) });
+			$(fadeData[0][2]).fadeTo(1000, 0.0, function() { $("#myheader").slideDown('normal', 'swing'); $(this).css({display: "none"});  }); //なぜかcssで min-width, min-heightを指定すると動かない。
 		}
 		
 	} else { //上に向かっている
 		for(var i=1; i < fadeData.length; i++) {
 			if ((scroll < fadeData[i][0]) && fadeData[i][1]) {
 		    	fadeData[i][1] = false;
-				$(fadeData[i][2]).fadeTo(1000, 1.0, function() { }) ;    		
+				$(fadeData[i][2]).fadeTo(1000, 1.0, function() { });    		
 			}    		
 		}
 	}
@@ -172,5 +252,14 @@ var fadeData =  [
 	[4500, false, "#img03_02"],
 	[6000, false, "#img03_03"]
 ]
-	
+
+
+//ポートフォリオデータ
+var portfolio = [
+	["src/portfolio/port1.jpeg", "#port1", "ケロムレスト", "description description description description description description description description" ],
+	["src/portfolio/port2.jpeg", "#port2", "ASEANロゴ", "description description description description description description description description" ],
+	["src/portfolio/port3.jpeg", "#port3", "ASEANロゴ2", "description description description description description description description description" ],
+	["src/portfolio/port4.jpeg", "#port4", "ASEANロゴ", "description description description description description description description description" ]
+]
+
 //})(jQuery);
