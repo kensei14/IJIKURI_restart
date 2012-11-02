@@ -61,7 +61,9 @@ $(document).ready(function() {
 	  		list[i] = new_img;
 	  	}
 	  	
-		$(id).fadeIn(2000, function() {  	
+		$(id).fadeIn(2000, function() {
+			
+			//クロージャを使う??
 		  	for (var i=0; i < list.length; i++) {
 		  		side.append(list[i]);
 				list[i].attr("width", side.width());
