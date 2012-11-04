@@ -49,14 +49,22 @@ function Contents(elem, initial_page, final_page, initial_pos, final_pos, img_wi
 		//border: "solid 1px red"
 	});
 
+	var t_font = img_width * 0.055;
+	if (t_font <= 40) { t_font = 40; }
+
 	wrapper.find(".title").css({ //コンテンツの中のタイトル部のCSS
-		fontSize: 25 + "pt",
+		fontSize: t_font + "px",
 	});
 
+	var d_font = img_width * 0.025;
+	if (d_font <= 20) { d_font = 20; }
+
 	wrapper.find(".description").css({ //コンテンツの中の内容部のCSS
+		fontSize: d_font^ + "px",
+
 		position: "absolute",
 		top: 50 + "%",
-		marginTop: -parseInt(wrapper.find(".description").css("height").replace("px",""))/2 + "px",
+		marginTop: -parseInt(wrapper.find(".description").css("height").replace("px",""))/2 - 10 + "px",
 		//border: "solid 1px blue"
 	});
 
