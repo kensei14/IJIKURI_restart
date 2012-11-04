@@ -28,160 +28,13 @@ $(document).ready(function() {
     }
     
     setData(pageWidth, pageHeight);
+    setModal();
     
     $("#img01").ready(function() {
 		$("#global_container").fadeTo(2000, 1.0, function() { });
     });
     
-    	//select all the a tag with name equal to modal
-	$('a[name=modal]').click(function(e) {
-	  e.preventDefault();
-
-	  var sizing = modal_sizing();
-	
-	  $('#mask').fadeIn(1000);	
-	  $('#mask').fadeTo("slow",0.7);
-          
-  	  var id = $(this).attr('href');
-  	  $(id).css({
-  	  	height: sizing.modalHeight + "px",
-  	  	width: sizing.modalWidth + "px",
-	    top: (sizing.winHeight - sizing.modalHeight) / 2 + "px",
-	    left: (sizing.winWidth - sizing.modalWidth) / 2 + "px"
-	  });
-	  
-	  var list = [];
-	  if (id == "#dialog2") {
-	  	var c = $("#dialog2 .content");
-	  	var side = $("#dialog2 .sidebar");
-	  	
-	  	for (var i=0; i < portfolio.length; i++) {
-	  		var new_img = $("<img style='overflow: hidden; display: none; ' />");
-	  		new_img.attr("src", portfolio[i][0]);
-	  		list[i] = new_img;
-	  	}
-	  	
-		$(id).fadeIn(2000, function() {
-			
-			//クロージャを使う??
-		  	for (var i=0; i < list.length; i++) {
-		  		side.append(list[i]);
-				list[i].attr("width", side.width());
-				list[i].fadeIn(1000);
-		  	}
-		});
-	  }
-	});
-	
-	$('.window .close').click(function (e) {
-		e.preventDefault();
-		$('#mask').hide();
-		$('.window').hide();
-	});		
-	
-	$('#mask').click(function () {
-		$(this).hide();
-		$('.window').hide();
-	});
-	
-	$(window).resize(function () {
-	 
-	 	var sizing = modal_sizing();
- 		var box = $('#boxes .window');
-	 	
-	  box.css({
-  	  	height: sizing.modalHeight + "px",
-  	  	width: sizing.modalWidth + "px",
-	    top: (sizing.winHeight - sizing.modalHeight) / 2 + "px",
-	    left: (sizing.winWidth - sizing.modalWidth) / 2 + "px"
-	  });
-	});
 });
-
-//モーダル・ウィンドウのサイズを返してくれる。
-function modal_sizing() {
-	$("#mask").css({
-	  width: $(document).width(),
-	  height: $(window).height()
-  	});
-  	
-	var h_rate = 0.8,
-		w_rate = 0.6;
-	return {
-		winHeight: $(document).height(),
-		winWidth: $(window).width(),
-		modalHeight: parseInt($(document).height() * h_rate),
-		modalWidth: parseInt($(window).width() * w_rate)
-	}
-	
-}
-
-function Contents(elem, initial_page, final_page, initial_pos, final_pos, img_width) {
-	this.initial_page = initial_page;
-	this.final_page = final_page;
-	this.initial_pos = initial_pos;	
-	this.final_pos = final_pos;
-	this.current = [];
-
-	this.speed = [];
-	this.speed[0] = ((final_page + final_pos[0]) - (initial_page + initial_pos[0])) / (final_page - initial_page);
-	this.speed[1] = (final_pos[1] - initial_pos[1]) / (final_page - initial_page);
-	
-	this.begining = [];
-	this.begining[0] = (initial_page + initial_pos[0]) - (this.speed[0] * initial_page);
-	this.begining[1] = this.initial_pos[1];
-	
-	this.elem = elem;
-
-	var pad = img_width * 0.15;
-	this.elem.css({
-		top: parseInt(this.begining[0]) + "px",
-		left: parseInt(this.begining[1]) + "px",
-		
-		padding: pad + "px",
-		width: img_width - pad + "px",
-		height: "auto",
-		border: "1px solid black"
-	});
-	
-	//子要素の幅・高さ指定
-	var c = this.elem.children();
-	console.log(c);
-	
-	//var c_size = parseInt(c.css("width").replace("px", "")) * 0.75;
-	var c_size = img_width - (2 * pad);
-	c.css({
-		width: c_size + "px",
-		height: c_size + "px",
-		/*border: "1px solid red"*/
-	});
-	c.find(".description").css({
-		marginTop: c_size/2 - c_size/5 + "px",
-	});
-	
-	this.scrolling = function(scrollx) {
-		//this.out();
-		this.current[0] = this.begining[0] + (this.speed[0] * scrollx);
-		this.current[1] = this.begining[1] + (this.speed[1] * scrollx);
-		
-		this.elem.css({
-			top: parseInt(this.current[0]) + "px",
-			left: parseInt(this.current[1]) + "px"
-		});
-	}
-	
-	this.out = function() {
-		var str = "";
-		str += "  top=" + this.elem.css("top") + "  ";
-		str += "  left=" +  this.elem.css("left") + "  ";
-		str += "  scroll=" + pre_scroll;
-		str += "  initial_pos=" + this.initial_pos[0] + "  ";
-		str += "  initial_pos=" + this.final_pos[0] + "  ";
-		str += "  speed=" + this.speed[0] + "  ";
-
-		console.log( str);
-	}
-}
 
 var pre_scroll = -1; /* 前のイベントでのスクロール値 */
 window.onscroll = function() {
@@ -241,14 +94,6 @@ function scrollToAnchor(event) {
 	return false;
 }
 
-var obj1, obj2, obj3, obj4;
-function setData(w, h) {
-	obj1 = new Contents($("#elem1"), 500, 1500, [300, parseInt(w*0.15)], [0,  parseInt(w*0.15)], parseInt(w*0.36));
-	obj2 = new Contents($("#elem2"), 500, 1500, [700,  parseInt(w*0.36)], [300,  parseInt(w*0.36)], parseInt(w*0.5));
-	obj3 = new Contents($("#elem3"), 3500, 4500, [500,  parseInt(w*0.12)], [0,  parseInt(w*0.12)], parseInt(w*0.5));
-	obj4 = new Contents($("#elem4"), 3500, 4500, [800,  parseInt(w*0.50)], [500,  parseInt(w*0.50)], parseInt(w*0.3));
-}
-
 //背景のフェード値
 var fadeData =  [
 	[500, false, "#img01"],
@@ -258,15 +103,6 @@ var fadeData =  [
 	[4000, false, "#img03_01"],
 	[4500, false, "#img03_02"],
 	[6000, false, "#img03_03"]
-]
-
-
-//ポートフォリオデータ
-var portfolio = [
-	["src/portfolio/port1.jpeg", "#port1", "ケロムレスト", "description description description description description description description description" ],
-	["src/portfolio/port2.jpeg", "#port2", "ASEANロゴ", "description description description description description description description description" ],
-	["src/portfolio/port3.jpeg", "#port3", "ASEANロゴ2", "description description description description description description description description" ],
-	["src/portfolio/port4.jpeg", "#port4", "ASEANロゴ", "description description description description description description description description" ]
 ]
 
 //})(jQuery);

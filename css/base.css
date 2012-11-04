@@ -102,6 +102,11 @@ img.bg {
 	background-repeat : no-repeat;
 }
 
+.contents .c_wrapper {
+	border: solid 1px black;
+	margin: auto;
+}
+
 .contents .title {
 	margin: 0 auto 5px;
 	
