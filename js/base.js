@@ -3,7 +3,6 @@
  */
 
 //(function($) {
-
 $(document).ready(function() {
     //var pageWidth = $(window).width() || 1000;
     var pageWidth = document.documentElement.clientWidth || window.innerWidth || window.document.documentElement.clientWidth || window.outerWidth;
@@ -35,8 +34,21 @@ $(document).ready(function() {
     });
     
 });
+//})(jQuery);
+
+//背景のフェード値
+var fadeData =  [
+	[500, false, "#img01"],
+	[1000, false, "#img02_01"],
+	[1500, false, "#img02_02"],
+	[3500, false, "#img02_03"],
+	[4000, false, "#img03_01"],
+	[4500, false, "#img03_02"],
+	[6000, false, "#img03_03"]
+]
 
 var pre_scroll = -1; /* 前のイベントでのスクロール値 */
+
 window.onscroll = function() {
 	var scroll = document.body.scrollTop || document.documentElement.scrollTop;
 	var rate;
@@ -72,7 +84,8 @@ window.onscroll = function() {
 	obj4.scrolling(scroll);
 }
 
-function scrollToAnchor(event) {	
+function scrollToAnchor(event) {	//メニュークリック時の移動
+		alert($("#elem1").find(".c_wrapper").css("margin-bottom"));
 	event.preventDefault();
 
 	var anchor  = $(this).attr('href');
@@ -93,16 +106,3 @@ function scrollToAnchor(event) {
 						
 	return false;
 }
-
-//背景のフェード値
-var fadeData =  [
-	[500, false, "#img01"],
-	[1000, false, "#img02_01"],
-	[1500, false, "#img02_02"],
-	[3500, false, "#img02_03"],
-	[4000, false, "#img03_01"],
-	[4500, false, "#img03_02"],
-	[6000, false, "#img03_03"]
-]
-
-//})(jQuery);
