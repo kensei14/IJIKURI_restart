@@ -1,0 +1,25 @@
+.contents {
+	position: absolute;
+	display: block;
+	left: 500px;
+	
+	background-image: url("../src/white_bg.png");
+	background-size : contain;
+	background-repeat : no-repeat;
+}
+
+.contents .c_wrapper {
+	margin: auto;
+}
+
+.contents .c_wrapper .title {
+	margin: 0 auto 5px;
+	text-align: center;
+}
+
+.contents .c_wrapper .description {
+}
+
+#elem1 .description {
+	font-size: 20pt;
+}
