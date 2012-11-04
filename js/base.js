@@ -133,7 +133,7 @@ function Contents(elem, initial_page, final_page, initial_pos, final_pos, img_wi
 	
 	this.elem = elem;
 
-	var pad = img_width * 0.2;
+	var pad = img_width * 0.15;
 	this.elem.css({
 		top: parseInt(this.begining[0]) + "px",
 		left: parseInt(this.begining[1]) + "px",
@@ -141,17 +141,22 @@ function Contents(elem, initial_page, final_page, initial_pos, final_pos, img_wi
 		padding: pad + "px",
 		width: img_width - pad + "px",
 		height: "auto",
-		border: "1px solid black"		
+		border: "1px solid black"
 	});
 	
 	//子要素の幅・高さ指定
 	var c = this.elem.children();
+	console.log(c);
+	
 	//var c_size = parseInt(c.css("width").replace("px", "")) * 0.75;
 	var c_size = img_width - (2 * pad);
 	c.css({
 		width: c_size + "px",
 		height: c_size + "px",
-		border: "1px solid red"
+		/*border: "1px solid red"*/
+	});
+	c.find(".description").css({
+		marginTop: c_size/2 - c_size/5 + "px",
 	});
 	
 	this.scrolling = function(scrollx) {
