@@ -36,21 +36,6 @@ $(document).ready(function() {
 });
 //})(jQuery);
 
-//背景のフェード値
-var fadeData =  [
-	[500, false, "#img01"],
-	[1000, false, "#img02_01"],
-	[1500, false, "#img02_02"],
-	[3500, false, "#img02_03"],
-	[4000, false, "#img03_01"],
-	[4500, false, "#img03_02"],
-	[6000, false, "#img03_03"],
-	[6500, false, "#img04_01"],
-	[7500, false, "#img04_02"],
-	[8000, false, "#img04_03"],
-	//[9000, false, "#img05"]
-]
-
 var pre_scroll = -1; /* 前のイベントでのスクロール値 */
 
 window.onscroll = function() {
@@ -88,6 +73,7 @@ window.onscroll = function() {
 	obj4.scrolling(scroll);
 	obj5.scrolling(scroll);
 	obj6.scrolling(scroll);
+	obj7.scrolling(scroll);
 }
 
 function scrollToAnchor(event) {	//メニュークリック時の移動

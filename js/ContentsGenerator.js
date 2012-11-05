@@ -1,15 +1,6 @@
 /**
  * @author Mack
  */
-var obj1, obj2, obj3, obj4, obj5, obj6;
-function setData(w, h) {
-	obj1 = new Contents($("#elem1"), 500, 1500, [300, parseInt(w*0.15)], [0,  parseInt(w*0.15)], parseInt(w*0.36));
-	obj2 = new Contents($("#elem2"), 500, 1500, [700,  parseInt(w*0.36)], [300,  parseInt(w*0.36)], parseInt(w*0.5));
-	obj3 = new Contents($("#elem3"), 3500, 4500, [500,  parseInt(w*0.12)], [0,  parseInt(w*0.12)], parseInt(w*0.5));
-	obj4 = new Contents($("#elem4"), 3500, 4500, [800,  parseInt(w*0.50)], [500,  parseInt(w*0.50)], parseInt(w*0.3));
-	obj5 = new Contents($("#elem5"), 6500, 7500, [600,  parseInt(w*0.18)], [50,  parseInt(w*0.18)], parseInt(w*0.4));
-	obj6 = new Contents($("#elem6"), 9000, 10000, [400,  parseInt(w*0.25)], [100,  parseInt(w*0.25)], parseInt(w*0.4));
-}
 
 function Contents(elem, initial_page, final_page, initial_pos, final_pos, img_width) {
 	this.initial_page = initial_page;
@@ -27,7 +18,9 @@ function Contents(elem, initial_page, final_page, initial_pos, final_pos, img_wi
 	this.begining[1] = this.initial_pos[1];
 
 	this.elem = elem;
-
+	
+	var id = this.elem.attr("id");
+	
 	var pad = img_width * 0.10;
 	this.elem.css({ //円全体のCSS
 		top: parseInt(this.begining[0]) + "px",
@@ -58,15 +51,18 @@ function Contents(elem, initial_page, final_page, initial_pos, final_pos, img_wi
 		fontSize: t_font + "px",
 	});
 
-	var d_font = img_width * 0.025;
+	var d_font = 0;
+	if (id == "elem1") { d_font = img_width * 0.057 }
+	if (id == "elem2") { d_font = img_width * 0.025 }
+	if (id == "elem3") { d_font = img_width * 0.04 }
 	if (d_font <= 20) { d_font = 20; }
 
 	wrapper.find(".description").css({ //コンテンツの中の内容部のCSS
-		fontSize: d_font^ + "px",
+		fontSize: d_font + "px",
 
 		position: "absolute",
 		top: 50 + "%",
-		marginTop: -parseInt(wrapper.find(".description").css("height").replace("px",""))/2 - 10 + "px",
+		marginTop: -parseInt(wrapper.find(".description").css("height").replace("px",""))/2 - 30 + "px",
 		//border: "solid 1px blue"
 	});
 

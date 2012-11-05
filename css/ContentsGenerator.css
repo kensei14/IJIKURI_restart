@@ -31,6 +31,10 @@
 	text-decoration: none;
 }
 
+.contents .c_wrapper .description ul li a:hover {
+	color: #777;
+}
+
 
 #elem1 { z-index: 50; }
 #elem2 { z-index: 50; }
@@ -38,7 +42,4 @@
 #elem4 { z-index: 50; }
 #elem5 { z-index: 50; }
 #elem6 { z-index: 50; }
-
-#elem1 .description {
-	font-size: 20pt;
-}
+#elem7 { z-index: -1; } /*ダミーコンテンツ*/
