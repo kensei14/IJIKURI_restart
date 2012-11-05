@@ -18,7 +18,26 @@
 }
 
 .contents .c_wrapper .description {
+	width: 100%;
 }
+
+.contents .c_wrapper .description ul li{
+	text-align: center;
+	margin-top: 1.5em;
+}
+
+.contents .c_wrapper .description ul li a {
+	color: black;
+	text-decoration: none;
+}
+
+
+#elem1 { z-index: 50; }
+#elem2 { z-index: 50; }
+#elem3 { z-index: 50; }
+#elem4 { z-index: 50; }
+#elem5 { z-index: 50; }
+#elem6 { z-index: 50; }
 
 #elem1 .description {
 	font-size: 20pt;

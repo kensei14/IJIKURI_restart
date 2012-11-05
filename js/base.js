@@ -82,6 +82,8 @@ window.onscroll = function() {
 	obj2.scrolling(scroll);
 	obj3.scrolling(scroll);
 	obj4.scrolling(scroll);
+	obj5.scrolling(scroll);
+	obj6.scrolling(scroll);
 }
 
 function scrollToAnchor(event) {	//メニュークリック時の移動

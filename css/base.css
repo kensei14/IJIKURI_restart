@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 .clearfix:after { content: ""; display: block; clear: both; }
@@ -17,11 +17,6 @@
 #img03_01 { z-index: 6; }
 #img03_02 { z-index: 5; }
 #img03_03 { z-index: 4; }
-
-#elem1 { z-index: 50; }
-#elem2 { z-index: 50; }
-#elem3 { z-index: 50; }
-#elem4 { z-index: 50; }
 
 #global_container {
 	z-index: 150;
@@ -46,8 +41,9 @@
   
   width: 100%;
   height: 50px;
-  background-image: url("../src/menu/menubar5.png");
-  background-repeat: repeat-x;
+  /*background-image: url("../src/menu/menubar5.png");*/
+  background-image: url("../src/menu/newptn.png");
+  background-repeat: repeat;
   /*background-color: black;*/
 }
 
