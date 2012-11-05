@@ -44,7 +44,11 @@ var fadeData =  [
 	[3500, false, "#img02_03"],
 	[4000, false, "#img03_01"],
 	[4500, false, "#img03_02"],
-	[6000, false, "#img03_03"]
+	[6000, false, "#img03_03"],
+	[6500, false, "#img04_01"],
+	[7500, false, "#img04_02"],
+	[8000, false, "#img04_03"],
+	//[9000, false, "#img05"]
 ]
 
 var pre_scroll = -1; /* 前のイベントでのスクロール値 */

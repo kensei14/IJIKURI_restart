@@ -17,6 +17,10 @@
 #img03_01 { z-index: 6; }
 #img03_02 { z-index: 5; }
 #img03_03 { z-index: 4; }
+#img04_01 { z-index: 3; }
+#img04_02 { z-index: 2; }
+#img04_03 { z-index: 1; }
+#img05 { z-index: 0; }
 
 #global_container {
 	z-index: 150;
