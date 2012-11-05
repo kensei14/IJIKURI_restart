@@ -55,6 +55,9 @@ function Contents(elem, initial_page, final_page, initial_pos, final_pos, img_wi
 	if (id == "elem1") { d_font = img_width * 0.057 }
 	if (id == "elem2") { d_font = img_width * 0.025 }
 	if (id == "elem3") { d_font = img_width * 0.04 }
+	if (id == "elem4") { d_font = img_width * 0.03 }
+	if (id == "elem5") { d_font = img_width * 0.055 }
+	if (id == "elem6") { d_font = img_width * 0.06 }
 	if (d_font <= 20) { d_font = 20; }
 
 	wrapper.find(".description").css({ //コンテンツの中の内容部のCSS

@@ -77,7 +77,7 @@ window.onscroll = function() {
 }
 
 function scrollToAnchor(event) {	//メニュークリック時の移動
-		alert($("#elem1").find(".c_wrapper").css("margin-bottom"));
+	//alert($("#elem1").find(".c_wrapper").css("margin-bottom"));
 	event.preventDefault();
 
 	var anchor  = $(this).attr('href');
