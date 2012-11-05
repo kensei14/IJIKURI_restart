@@ -8,25 +8,25 @@ function setModal() {
 	  e.preventDefault();
 
 	  var sizing = modal_sizing();
-	
+
 	  $('#mask').fadeIn(1000);	
 	  $('#mask').fadeTo("slow",0.7);
-          
-  	  var id = $(this).attr('href');
-  	  $(id).css({
-  	  	height: sizing.modalHeight + "px",
-  	  	width: sizing.modalWidth + "px",
+       
+	  var id = $(this).attr('href');
+	  $(id).css({
+		height: sizing.modalHeight + "px",
+		width: sizing.modalWidth + "px",
 	    top: (sizing.winHeight - sizing.modalHeight) / 2 + "px",
 	    left: (sizing.winWidth - sizing.modalWidth) / 2 + "px"
 	  });
-	  
+
 	  var list = [];
 	  if (id == "#dialog2") {
-	  	var c = $("#dialog2 .content");
-	  	var side = $("#dialog2 .sidebar");
-	  	
-	  	for (var i=0; i < portfolio.length; i++) {
-	  		var new_img = $("<img style='overflow: hidden; display: none; ' />");
+		var content = $("#dialog2 .content");
+		//var side = $("#dialog2 .sidebar");
+
+		for (var i=0; i < portfolio.length; i++) {
+	  		var new_img = $("<img style='overflow: hidden; display: none; margin: auto;' />");
 	  		new_img.attr("src", portfolio[i][0]);
 	  		list[i] = new_img;
 	  	}
@@ -35,9 +35,14 @@ function setModal() {
 			
 			//クロージャを使う??
 		  	for (var i=0; i < list.length; i++) {
+		  		content.append(list[i]);
+				list[i].attr("height", content.height());
+				/*
 		  		side.append(list[i]);
 				list[i].attr("width", side.width());
+				*/
 				list[i].fadeIn(1000);
+				list[i].css({ display: "block" });
 		  	}
 		});
 	  }
@@ -62,7 +67,7 @@ function setModal() {
 	  box.css({
   	  	height: sizing.modalHeight + "px",
   	  	width: sizing.modalWidth + "px",
-	    top: (sizing.winHeight - sizing.modalHeight) / 2 + "px",
+	    top: (sizing.winHeight - sizing.modalHeight) /  + "px",
 	    left: (sizing.winWidth - sizing.modalWidth) / 2 + "px"
 	  });
 	});
@@ -77,7 +82,7 @@ function modal_sizing() {
   	});
   	
 	var h_rate = 0.8,
-		w_rate = 0.6;
+		w_rate = 0.4;
 	return {
 		winHeight: $(document).height(),
 		winWidth: $(window).width(),
@@ -85,11 +90,3 @@ function modal_sizing() {
 		modalWidth: parseInt($(window).width() * w_rate)
 	}
 }
-
-//ポートフォリオデータ
-var portfolio = [
-	["src/portfolio/port1.jpeg", "#port1", "ケロムレスト", "description description description description description description description description" ],
-	["src/portfolio/port2.jpeg", "#port2", "ASEANロゴ", "description description description description description description description description" ],
-	["src/portfolio/port3.jpeg", "#port3", "ASEANロゴ2", "description description description description description description description description" ],
-	["src/portfolio/port4.jpeg", "#port4", "ASEANロゴ", "description description description description description description description description" ]
-]

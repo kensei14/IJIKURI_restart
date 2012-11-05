@@ -13,7 +13,7 @@ var fadeData =  [
 	[6000, false, "#img03_03"],
 	[6500, false, "#img04_01"],
 	[7500, false, "#img04_02"],
-	[8500, false, "#img04_03"],
+	[9000, false, "#img04_03"],
 	//[9000, false, "#img05"]
 ]
 
@@ -29,3 +29,13 @@ function setData(w, h) {
 	//ダミーコンテンツ
 	obj7 = new Contents($("#elem7"), 8800, 13000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], 300);
 }
+
+//ポートフォリオデータ　モーダルで使用
+var portfolio = [
+	["src/portfolio/port1.jpeg", "#port1", "ケロムレスト", "description description description description description description description description" ],
+	/*
+	["src/portfolio/port2.jpeg", "#port2", "ASEANロゴ", "description description description description description description description description" ],
+	["src/portfolio/port3.jpeg", "#port3", "ASEANロゴ2", "description description description description description description description description" ],
+	["src/portfolio/port4.jpeg", "#port4", "ASEANロゴ", "description description description description description description description description" ]
+	*/
+]
