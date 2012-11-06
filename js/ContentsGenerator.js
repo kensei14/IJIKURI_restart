@@ -29,8 +29,12 @@ function Contents(elem, initial_page, final_page, initial_pos, final_pos, img_wi
 		padding: pad + "px",
 		width: img_width - pad + "px",
 		height: img_width - pad + "px",
+		zIndex: 50
 		//border: "1px solid black"
 	});
+	if (id == "elem100") {
+		this.elem.css({ zIndex: -1 });
+	}
 
 	var wrapper = this.elem.children();	//子要素の幅・高さ指定
 

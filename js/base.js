@@ -10,22 +10,23 @@ $(document).ready(function() {
     var screenWidth = window.outerWidth;
     var screenHeight = window.outerHeight;
 
+	//ロゴ
     var logo = $("#logo");
     var logo_width = pageWidth * 0.35;
-
-    //logo.css("height", parseInt(pageHeight * 0.4) + "px");
     logo.css({
-    	width: parseInt(logo_width) + "px",
-    	height: "auto",
-    	left: parseInt(pageWidth/2 - logo_width/2) + "px",
-    	top: parseInt(pageHeight * 0.2) + "px"
+		width: parseInt(logo_width) + "px",
+		height: "auto",
+		left: parseInt(pageWidth/2 - logo_width/2) + "px",
+		top: parseInt(pageHeight * 0.2) + "px"
     });
-	
+
+	//menu_barのクリック時
     var a_elems = document.getElementsByTagName("a");
     for(var i=0; i < a_elems.length; i++) {
     	a_elems[i].addEventListener("click", scrollToAnchor, false);
     }
     
+    //コンテンツの生成
     setData(pageWidth, pageHeight);
     setModal();
     
@@ -67,15 +68,7 @@ window.onscroll = function() {
 	}
 	pre_scroll = scroll;
 	
-	obj1.scrolling(scroll);
-	obj2.scrolling(scroll);
-	obj3.scrolling(scroll);
-	obj4.scrolling(scroll);
-	obj5.scrolling(scroll);
-	obj6.scrolling(scroll);
-	obj7.scrolling(scroll);
-	obj8.scrolling(scroll);
-	obj9.scrolling(scroll);
+	obj.scroll_all(scroll);
 }
 
 function scrollToAnchor(event) {	//メニュークリック時の移動

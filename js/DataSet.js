@@ -1,7 +1,6 @@
 /**
  * @author Mack
  */
-
 //背景のフェード値
 var fadeData =  [
 	[500, false, "#img01"],
@@ -17,19 +16,27 @@ var fadeData =  [
 	//[9000, false, "#img05"]
 ]
 
-//コンテンツの値：　id initial_page final_page initial_pos final_pos width
-var obj1, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9;
+var obj = {};
 function setData(w, h) {
-	obj1 = new Contents($("#elem1"), 500, 1500, [300, parseInt(w*0.15)], [0,  parseInt(w*0.15)], parseInt(w*0.36));
-	obj2 = new Contents($("#elem2"), 500, 1500, [700,  parseInt(w*0.36)], [300,  parseInt(w*0.36)], parseInt(w*0.5));
-	obj3 = new Contents($("#elem3"), 3500, 4500, [500,  parseInt(w*0.12)], [0,  parseInt(w*0.12)], parseInt(w*0.4));
-	obj4 = new Contents($("#elem4"), 3500, 4500, [800,  parseInt(w*0.50)], [500,  parseInt(w*0.50)], parseInt(w*0.3));
-	obj5 = new Contents($("#elem5"), 6500, 7500, [600,  parseInt(w*0.3)], [100,  parseInt(w*0.3)], parseInt(w*0.35));
-	obj6 = new Contents($("#elem6"), 8500, 10000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], parseInt(w*0.3));
-	//ダミーコンテンツ
-	obj7 = new Contents($("#elem7"), 8800, 13000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], 300);
-	obj8 = new Contents($("#elem8"), 8800, 13000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], parseInt(w*0.3));
-	obj9 = new Contents($("#elem9"), 8800, 13000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], parseInt(w*0.2));
+	obj.circle = [
+		//コンテンツの値：　id initial_page final_page initial_pos final_pos width
+		new Contents($("#elem1"), 500, 1500, [300, parseInt(w*0.15)], [0,  parseInt(w*0.15)], parseInt(w*0.36)),
+		new Contents($("#elem2"), 500, 1500, [700,  parseInt(w*0.36)], [300,  parseInt(w*0.36)], parseInt(w*0.5)),
+		new Contents($("#elem3"), 3500, 4500, [500,  parseInt(w*0.12)], [0,  parseInt(w*0.12)], parseInt(w*0.4)),
+		new Contents($("#elem4"), 3500, 4500, [800,  parseInt(w*0.50)], [500,  parseInt(w*0.50)], parseInt(w*0.3)),
+		new Contents($("#elem5"), 6500, 7500, [600,  parseInt(w*0.3)], [100,  parseInt(w*0.3)], parseInt(w*0.35)),
+		new Contents($("#elem6"), 8500, 10000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], parseInt(w*0.3)),
+		new Contents($("#elem8"), 8800, 13000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], parseInt(w*0.3)),
+		new Contents($("#elem9"), 8800, 13000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], parseInt(w*0.2)),
+		new Contents($("#elem100"), 8800, 13000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], 300)
+	];
+	
+	obj.scroll_all = function(scroll) {
+		var l = this.circle.length;
+		for(var i=0; i < l; i++) {
+			this.circle[i].scrolling(scroll);
+		}
+	}
 }
 
 //ポートフォリオデータ　モーダルで使用
