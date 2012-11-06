@@ -27,8 +27,9 @@ $(document).ready(function() {
     }
     
     //コンテンツの生成
-    setData(pageWidth, pageHeight);
+    setContents(pageWidth, pageHeight);
     setModal();
+    setAnim();
     
     $("#img01").ready(function() {
 		$("#global_container").fadeTo(2000, 1.0, function() { });

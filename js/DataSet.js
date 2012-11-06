@@ -17,7 +17,7 @@ var fadeData =  [
 ]
 
 var obj = {};
-function setData(w, h) {
+function setContents(w, h) {
 	obj.circle = [
 		//コンテンツの値：　id initial_page final_page initial_pos final_pos width
 		new Contents($("#elem1"), 500, 1500, [300, parseInt(w*0.15)], [0,  parseInt(w*0.15)], parseInt(w*0.36)),
@@ -26,11 +26,15 @@ function setData(w, h) {
 		new Contents($("#elem4"), 3500, 4500, [800,  parseInt(w*0.50)], [500,  parseInt(w*0.50)], parseInt(w*0.3)),
 		new Contents($("#elem5"), 6500, 7500, [600,  parseInt(w*0.3)], [100,  parseInt(w*0.3)], parseInt(w*0.35)),
 		new Contents($("#elem6"), 8500, 10000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], parseInt(w*0.3)),
-		new Contents($("#elem8"), 8800, 13000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], parseInt(w*0.3)),
-		new Contents($("#elem9"), 8800, 13000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], parseInt(w*0.2)),
+
+		/*Member List*/
+		new Contents($("#elem7"), 8800, 13000, [400,  parseInt(w*0.6)], [0,  parseInt(w*0.6)], parseInt(w*0.35)),
+		new Contents($("#elem8"), 8800, 13000, [400,  parseInt(w*0.5)], [0,  parseInt(w*0.5)], parseInt(w*0.4)),
+
+		/*Dummy Contents*/
 		new Contents($("#elem100"), 8800, 13000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], 300)
 	];
-	
+
 	obj.scroll_all = function(scroll) {
 		var l = this.circle.length;
 		for(var i=0; i < l; i++) {

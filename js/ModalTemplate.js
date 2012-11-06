@@ -9,7 +9,7 @@ function setModal() {
 
 	  var sizing = modal_sizing();
 
-	  $('#mask').fadeIn(1000);	
+	  $('#mask').fadeIn(1000);
 	  $('#mask').fadeTo("slow",0.7);
        
 	  var id = $(this).attr('href');
