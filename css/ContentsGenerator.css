@@ -5,6 +5,8 @@
 #elem5 { z-index: 50; }
 #elem6 { z-index: 50; }
 #elem7 { z-index: -1; } /*ダミーコンテンツ*/
+#elem8 { z-index: 50; }
+#elem9 { z-index: 50; }
 
 .contents {
 	position: absolute;

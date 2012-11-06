@@ -18,7 +18,7 @@ var fadeData =  [
 ]
 
 //コンテンツの値：　id initial_page final_page initial_pos final_pos width
-var obj1, obj2, obj3, obj4, obj5, obj6, obj7;
+var obj1, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9;
 function setData(w, h) {
 	obj1 = new Contents($("#elem1"), 500, 1500, [300, parseInt(w*0.15)], [0,  parseInt(w*0.15)], parseInt(w*0.36));
 	obj2 = new Contents($("#elem2"), 500, 1500, [700,  parseInt(w*0.36)], [300,  parseInt(w*0.36)], parseInt(w*0.5));
@@ -28,6 +28,8 @@ function setData(w, h) {
 	obj6 = new Contents($("#elem6"), 8500, 10000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], parseInt(w*0.3));
 	//ダミーコンテンツ
 	obj7 = new Contents($("#elem7"), 8800, 13000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], 300);
+	obj8 = new Contents($("#elem8"), 8800, 13000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], parseInt(w*0.3));
+	obj9 = new Contents($("#elem9"), 8800, 13000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], parseInt(w*0.2));
 }
 
 //ポートフォリオデータ　モーダルで使用
