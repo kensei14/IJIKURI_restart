@@ -13,6 +13,7 @@ function setAnim() {
 		ml_height = $("#elem4").height() + parseInt($("#elem4").css("padding").replace("px","")) * 2,
 		ml_top;
 	var pre_focus = 0;
+	var anim_style = false;
 
 	$('a[name=slide]').click(function(e) {
 		e.preventDefault();
@@ -31,44 +32,38 @@ function setAnim() {
 				focus_elem_height = $(focus_elem).height() + parseInt($(focus_elem).css("padding").replace("px","")) * 2;
 				target_focus = ml_top - (focus_elem_height - ml_height)/2;
 										
-				$("#elem4").animate(
-					{ 'left':  parseInt($(focus_elem).css("left").replace("px","")) - ml_width - 30 + 'px' },
-					{ 'duration': 400, 'easing': 'linear' }
-				);
 				ml_targets[i] = target_focus;
-/*				$(focus_elem).animate(
-					{ 'top': target_focus + 'px' },
-					{ 'duration': 300, 'easing': 'linear' }
-				);
-*/
+				if (i < pre_focus) { anim_style = true; }
+				else { anim_style = false; }
+				pre_focus = i;
 			} else if (find) {
 				ml_targets[i] = target_bottom;
-/*				$(ml[i]).animate(
-					{ 'top': target_bottom + 'px' },
-					{ 'duration': 400, 'easing': 'linear' }
-				);
-*/
 			} else {
 				ml_targets[i] = target_top;
-/*				$(ml[i]).animate(
-					{ 'top': target_top + 'px' },
-					{ 'duration': 400, 'easing': 'linear' }
-				);
-*/
 			}
-			nextAnim(0);	
 		}
+		
+		if (anim_style) { nextAnim(ml_l-1, anim_style); }
+		else { nextAnim(0, anim_style); }
+		$("#elem4").animate(
+			{ 'left':  parseInt($(focus_elem).css("left").replace("px","")) - ml_width - 30 + 'px' },
+			{ 'duration': 400, 'easing': 'linear' }
+		);
 	});
 	
-	function nextAnim(p) {
+	function nextAnim(p, anim_style) {
 		if (ml[p] == "undefined" | ml[p] == null) {
 			return false;
 		}
 		else {
 			$(ml[p]).animate(
 					{ 'top': ml_targets[p] + 'px' },
-					{ 'duration': 400, 'easing': 'linear' },
-					nextAnim(p+1)
+					300,
+					'linear',
+					function() {
+						if (anim_style) { nextAnim(p-1, anim_style); } 
+						else { nextAnim(p+1, anim_style); }
+					}
 			);
 		}
 	}
