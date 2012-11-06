@@ -30,6 +30,8 @@ function setContents(w, h) {
 		/*Member List*/
 		new Contents($("#elem7"), 8800, 13000, [400,  parseInt(w*0.6)], [0,  parseInt(w*0.6)], parseInt(w*0.35)),
 		new Contents($("#elem8"), 8800, 13000, [400,  parseInt(w*0.5)], [0,  parseInt(w*0.5)], parseInt(w*0.4)),
+		new Contents($("#elem9"), 8800, 13000, [400,  parseInt(w*0.55)], [0,  parseInt(w*0.55)], parseInt(w*0.36)),
+		new Contents($("#elem10"), 8800, 13000, [400,  parseInt(w*0.45)], [0,  parseInt(w*0.45)], parseInt(w*0.38)),
 
 		/*Dummy Contents*/
 		new Contents($("#elem100"), 8800, 13000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], 300)

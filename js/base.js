@@ -2,13 +2,13 @@
  * @author Mack
  */
 
+var pageWidth, pageHeight;
+
 //(function($) {
 $(document).ready(function() {
     //var pageWidth = $(window).width() || 1000;
-    var pageWidth = document.documentElement.clientWidth || window.innerWidth || window.document.documentElement.clientWidth || window.outerWidth;
-    var pageHeight = document.documentElement.clientHeight || window.innerHeight || window.document.documentElement.clientHeight || window.outerHeight;
-    var screenWidth = window.outerWidth;
-    var screenHeight = window.outerHeight;
+    pageWidth = document.documentElement.clientWidth || window.innerWidth || window.document.documentElement.clientWidth || window.outerWidth;
+    pageHeight = document.documentElement.clientHeight || window.innerHeight || window.document.documentElement.clientHeight || window.outerHeight;
 
 	//ロゴ
     var logo = $("#logo");
