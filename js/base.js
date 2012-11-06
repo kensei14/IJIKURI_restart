@@ -3,6 +3,10 @@
  */
 
 var pageWidth, pageHeight;
+var member_lock = {
+	lock: false,
+	pos_origin: 0
+};
 
 //(function($) {
 $(document).ready(function() {
@@ -68,7 +72,14 @@ window.onscroll = function() {
 		}
 	}
 	pre_scroll = scroll;
-	
+	/*
+	if (member_lock.lock) {
+		$("#elem4").animate(
+			{ 'left':  member_lock.pos_origin + 'px' },
+			{ 'duration': 400, 'easing': 'linear' }
+		);
+	}
+	*/
 	obj.scroll_all(scroll);
 }
 
