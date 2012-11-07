@@ -24,6 +24,7 @@ function setAnim() {
 	$('a[name=slide]').click(function(e) {
 		e.preventDefault();
 		$(window).unbind("scroll").bind("scroll", scroll_lock);
+		$("#member_list").css({ display: "block" });
 
 		var focus_elem = $(this).attr('href'), //動かす対象の円コンテンツ
 			focus_elem_height; 
@@ -84,6 +85,7 @@ function setAnim() {
 		for (var i=0; i < ml_l; i++) {
 			$(ml[i]).fadeOut("slow");
 		}
+		$("#member_list").css({ display: "none" });
 		if (member_lock.lock) {
 			$("#elem4").animate(
 				{ 'left':  member_lock.pos_origin + 'px' },

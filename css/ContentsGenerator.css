@@ -13,6 +13,7 @@
 }
 
 .contents .c_wrapper .title {
+	font-family : 'Vollkorn', sans-serif, 'Arial';
 	margin: 0 auto 5px;
 	text-align: center;
 }
@@ -33,4 +34,8 @@
 
 .contents .c_wrapper .description ul li a:hover {
 	color: #777;
+}
+
+#member_list {
+	display: none;
 }

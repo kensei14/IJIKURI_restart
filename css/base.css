@@ -3,10 +3,18 @@
 
 .clearfix:after { content: ""; display: block; clear: both; }
 
+@font-face {
+	font-family: 'ume';
+	src: url("ume-tmo3.ttf") format("truetype");
+}
+
 * {
-	/*font-family : 'Vollkorn', 'ＭＳ 明朝', 'ＭＳ 明朝', serif, 'ＭＳ Ｐゴシック',sans-serif, 'Arial';*/	
-	font-family : 'Vollkorn', 'MS 明朝', 'MS P明朝', serif, 'ＭＳ Ｐゴシック',sans-serif, 'Arial';	
+	font-family : 'ume', 'MS 明朝', 'MS P明朝', sans-serif, serif, 'ＭＳ Ｐゴシック';	
 	line-height: 1.4em;
+}
+
+.eng {
+	font-family : 'Vollkorn', sans-serif, 'Arial';
 }
 
 /* 背景 */
