@@ -3,10 +3,6 @@
  */
 
 var pageWidth, pageHeight;
-var member_lock = {
-	lock: false,
-	pos_origin: 0
-};
 
 //(function($) {
 $(document).ready(function() {
@@ -44,7 +40,9 @@ $(document).ready(function() {
 
 var pre_scroll = -1; /* 前のイベントでのスクロール値 */
 
-window.onscroll = function() {
+$(window).bind("scroll", window_scroll);
+
+function window_scroll() {
 	var scroll = document.body.scrollTop || document.documentElement.scrollTop;
 	var rate;
 		
@@ -72,14 +70,7 @@ window.onscroll = function() {
 		}
 	}
 	pre_scroll = scroll;
-	/*
-	if (member_lock.lock) {
-		$("#elem4").animate(
-			{ 'left':  member_lock.pos_origin + 'px' },
-			{ 'duration': 400, 'easing': 'linear' }
-		);
-	}
-	*/
+	
 	obj.scroll_all(scroll);
 }
 

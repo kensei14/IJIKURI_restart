@@ -2,6 +2,11 @@
  * @author Mack
  */
 
+var member_lock = {
+	lock: false,
+	pos_origin: 0
+};
+
 function setAnim() {
 	var target_top,
 		target_focus,
@@ -18,6 +23,7 @@ function setAnim() {
 
 	$('a[name=slide]').click(function(e) {
 		e.preventDefault();
+		$(window).unbind("scroll").bind("scroll", scroll_lock);
 
 		var focus_elem = $(this).attr('href'), //動かす対象の円コンテンツ
 			focus_elem_height; 
@@ -52,8 +58,8 @@ function setAnim() {
 			{ 'duration': 400, 'easing': 'linear' }
 		);
 		
+		if(!member_lock.lock) { member_lock.pos_origin = ml_left; }
 		member_lock.lock = true;
-		member_lock.pos_origin = ml_left;
 	});
 	
 	function nextAnim(p, anim_style) {
@@ -70,6 +76,24 @@ function setAnim() {
 						else { nextAnim(p+1, anim_style); }
 					}
 			);
+			$(ml[p]).fadeIn("fast");
 		}
+	}
+	
+	function scroll_lock() {
+		for (var i=0; i < ml_l; i++) {
+			$(ml[i]).fadeOut("slow");
+		}
+		if (member_lock.lock) {
+			$("#elem4").animate(
+				{ 'left':  member_lock.pos_origin + 'px' },
+				400,
+				'linear',
+				function() {
+					$(window).bind("scroll", window_scroll);
+				}
+			);
+		}
+		member_lock.lock = false;
 	}
 }
