@@ -7,7 +7,6 @@ function setModal() {
 	  e.preventDefault();
 
 	  var sizing = modal_sizing();
-	  console.log(sizing);
 
 	  $('#mask').fadeIn(1000);
 	  $('#mask').fadeTo("slow",0.7);
@@ -78,7 +77,7 @@ function displayModal() {
 		currentHovered		= -1,
 		current				= 0,
 		$loader				= $('#loader');
-	
+
 	/*check if you are using a browser*/	
 	var ie 				= false;
 	if ($.browser.msie) {
@@ -97,14 +96,9 @@ function displayModal() {
 			onComplete	: function(){
 				++loaded;
 				if(loaded == total_images){
-					//all images preloaded,
-					//show ps_container and initialize events
 					$loader.hide();
 					$ps_container.show();
-					//when mouse enters the pages (the dots),
-					//show the tooltip,
-					//when mouse leaves hide the tooltip,
-					//clicking on one will display the respective image	
+					
 					$links.bind('mouseenter',showTooltip)
 						  .bind('mouseleave',hideTooltip)
 						  .bind('click',showImage);
@@ -117,7 +111,6 @@ function displayModal() {
 	});
 	
 	function showTooltip(){
-		console.log("showTooltip");
 		var $link			= $(this),
 			idx				= $link.index(),
 			linkOuterWidth	= $link.outerWidth(),
@@ -190,7 +183,6 @@ function displayModal() {
 	}
 	
 	function hideTooltip(){
-		console.log("hideTooltip");
 		//hide / fade out the tooltip
 		if(ie)
 			$tooltip.hide();

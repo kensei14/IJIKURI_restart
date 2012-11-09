@@ -33,7 +33,8 @@ function setAnim() {
 		ml_top  = parseInt($("#elem4").css("top").replace("px",""));
 		ml_left = parseInt($("#elem4").css("left").replace("px",""));
 		target_top = ml_top - pageHeight * 2;
-		target_bottom = parseInt($("#elem100").css("top").replace("px",""));
+		target_bottom = ml_top + pageHeight * 2;
+		//target_bottom = parseInt($("#elem100").css("top").replace("px",""));
 
 		for (var i=0; i < ml_l; i++) {
 			if (focus_elem == ("#" + $(ml[i]).attr("id"))) {

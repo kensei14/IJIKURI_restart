@@ -2,6 +2,31 @@
  * @author Mack
  */
 
+(function($) {
+	$.fn.preload = function(options) {
+		var opts 	= $.extend({}, $.fn.preload.defaults, options),
+			o		= $.meta ? $.extend({}, opts, this.data()) : opts;
+		return this.each(function() {
+			var $e	= $(this),
+				t	= $e.attr('rel'),
+				i	= $e.attr('href'),
+				l	= 0;
+			$('<img/>').load(function(i){
+				++l;
+				if(l==2) o.onComplete();
+			}).attr('src',i);
+			$('<img/>').load(function(i){
+				++l;
+				if(l==2) o.onComplete();
+			}).attr('src',t);	
+		});
+	};
+	$.fn.preload.defaults = {
+		onComplete	: function(){return false;}
+	};
+})(jQuery);
+
+
 var pageWidth, pageHeight;
 
 //(function($) {
@@ -35,6 +60,28 @@ $(document).ready(function() {
 		$("#global_container").fadeTo(2000, 1.0, function() { });
     });
     
+  	/*
+  	$("#background").children().each(function(i) {
+  		var a = $(this).find('a');
+	  	console.log($(this).find('a'));
+  		a.preload({
+			onComplete	: function() {
+				a.attr("id", "img02_01");
+				a.attr("class", "bg");
+			}
+  		});
+  	});
+  	*/
+  	
+    /*
+	$link.find('a').preload({
+		onComplete	: function(){
+			++loaded;
+			if(loaded == total_images){
+			}
+		}
+	});
+    */
 });
 //})(jQuery);
 
@@ -75,30 +122,28 @@ function window_scroll() {
 }
 
 function scrollToAnchor(event) {	//メニュークリック時の移動
-	//alert($("#elem1").find(".c_wrapper").css("margin-bottom"));
 	event.preventDefault();
 
 	var anchor  = $(this).attr('href');
-	var targetOffset;
+	var targetOffset = 0;
 	switch(anchor) {
 		case '#About':
-			//scrollTo(0, fadeData[2][0] + 10);
 			targetOffset = fadeData[2][0];
 			break;
 		case '#Members':
-			//scrollTo(0, fadeData[5][0] + 10);
 			targetOffset = fadeData[5][0];
 			break;
 		case '#Works':
 			targetOffset = fadeData[8][0];
 			break;
 		case '#Contact':
-			targetOffset = fadeData[9][0];
+			targetOffset = fadeData[9][0] + 2000;
 			break;
 		default :
 			break;
 	}
-    $('html, body').animate({scrollTop: targetOffset}, 'slow');
+	
+    $('html, body').animate({scrollTop: targetOffset}, 'easing');
 	/*    if ($.browser.msie){    
 	        document.documentElement.scrollTop = targetOffset;  
 	    }
@@ -106,27 +151,3 @@ function scrollToAnchor(event) {	//メニュークリック時の移動
 						
 	return false;
 }
-
-(function($) {
-	$.fn.preload = function(options) {
-		var opts 	= $.extend({}, $.fn.preload.defaults, options),
-			o		= $.meta ? $.extend({}, opts, this.data()) : opts;
-		return this.each(function() {
-			var $e	= $(this),
-				t	= $e.attr('rel'),
-				i	= $e.attr('href'),
-				l	= 0;
-			$('<img/>').load(function(i){
-				++l;
-				if(l==2) o.onComplete();
-			}).attr('src',i);	
-			$('<img/>').load(function(i){
-				++l;
-				if(l==2) o.onComplete();
-			}).attr('src',t);	
-		});
-	};
-	$.fn.preload.defaults = {
-		onComplete	: function(){return false;}
-	};
-})(jQuery);
