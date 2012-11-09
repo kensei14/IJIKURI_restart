@@ -46,7 +46,7 @@ $(document).ready(function() {
     });
 
 	//menu_barのクリック時
-    var a_elems = document.getElementsByTagName("a");
+    var a_elems = $("#myheader").find("a");
     for(var i=0; i < a_elems.length; i++) {
     	a_elems[i].addEventListener("click", scrollToAnchor, false);
     }
@@ -125,6 +125,7 @@ function scrollToAnchor(event) {	//メニュークリック時の移動
 	event.preventDefault();
 
 	var anchor  = $(this).attr('href');
+	console.log(anchor);
 	var targetOffset = 0;
 	switch(anchor) {
 		case '#About':
