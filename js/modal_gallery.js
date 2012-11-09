@@ -1,33 +1,6 @@
 /**
  * @author 鎗水謙星
  */
-/*
-the images preload plugin
-*/
-(function($) {
-	$.fn.preload = function(options) {
-		var opts 	= $.extend({}, $.fn.preload.defaults, options),
-			o		= $.meta ? $.extend({}, opts, this.data()) : opts;
-		return this.each(function() {
-			var $e	= $(this),
-				t	= $e.attr('rel'),
-				i	= $e.attr('href'),
-				l	= 0;
-			$('<img/>').load(function(i){
-				++l;
-				if(l==2) o.onComplete();
-			}).attr('src',i);	
-			$('<img/>').load(function(i){
-				++l;
-				if(l==2) o.onComplete();
-			}).attr('src',t);	
-		});
-	};
-	$.fn.preload.defaults = {
-		onComplete	: function(){return false;}
-	};
-})(jQuery);
-
 function setModal() {
 	//select all the a tag with name equal to modal
 	$('a[name=modal]').click(function(e) {
@@ -38,6 +11,7 @@ function setModal() {
 
 	  $('#mask').fadeIn(1000);
 	  $('#mask').fadeTo("slow",0.7);
+  	  $('#ps_container').fadeIn(1000);
        
 	  var id = $(this).attr('href');
 	  $(id).css({
@@ -48,58 +22,22 @@ function setModal() {
 	  });
 
 	  displayModal();
-
-	  var list = [];
-	  /*
-	  if (id == "#dialog2") {
-		var content = $("#dialog2 .content");
-		//var side = $("#dialog2 .sidebar");
-
-		for (var i=0; i < portfolio.length; i++) {
-	  		var new_img = $("<img style='overflow: hidden; display: none; margin: auto;' />");
-	  		new_img.attr("src", portfolio[i][0]);
-	  		list[i] = new_img;
-	  	}
-	  	
-	  	
-		$(id).fadeIn(2000, function() {
-			
-			//クロージャを使う??
-		  	for (var i=0; i < list.length; i++) {
-		  		content.append(list[i]);
-				list[i].attr("height", content.height());
-				/*
-		  		side.append(list[i]);
-				list[i].attr("width", side.width());
-				*/
-				/*
-				list[i].fadeIn(1000);
-				list[i].css({ display: "block" });
-		  	}
-		});
-	  }
-	  */
 	});
-	
-	$('.window .close').click(function (e) {
+
+	$('#mask').click(function (e) {
 		e.preventDefault();
-		$('#mask').hide();
-		$('.window').hide();
-	});		
-	
-	$('#mask').click(function () {
 		$(this).hide();
-		$('.window').hide();
+		$('#ps_container').hide();
 	});
-	
+
 	$(window).resize(function () {
-	 
-	 	var sizing = modal_sizing();
- 		var box = $('#boxes .window');
-	 	
+
+		var sizing = modal_sizing();
+		var box = $('#boxes .window');
+
 	  box.css({
-  	  	height: sizing.modalHeight + "px",
-  	  	width: sizing.modalWidth + "px",
+	  	height: sizing.modalHeight + "px",
+	  	width: sizing.modalWidth + "px",
 	    top: (sizing.winHeight - sizing.modalHeight) /  + "px",
 	    left: (sizing.winWidth - sizing.modalWidth) / 2 + "px"
 	  });

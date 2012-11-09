@@ -79,20 +79,54 @@ function scrollToAnchor(event) {	//メニュークリック時の移動
 	event.preventDefault();
 
 	var anchor  = $(this).attr('href');
+	var targetOffset;
 	switch(anchor) {
 		case '#About':
-			scrollTo(0, fadeData[2][0] + 10);
+			//scrollTo(0, fadeData[2][0] + 10);
+			targetOffset = fadeData[2][0];
 			break;
 		case '#Members':
-			scrollTo(0, fadeData[5][0] + 10);
+			//scrollTo(0, fadeData[5][0] + 10);
+			targetOffset = fadeData[5][0];
 			break;
 		case '#Works':
+			targetOffset = fadeData[8][0];
 			break;
 		case '#Contact':
+			targetOffset = fadeData[9][0];
 			break;
 		default :
 			break;
 	}
+    $('html, body').animate({scrollTop: targetOffset}, 'slow');
+	/*    if ($.browser.msie){    
+	        document.documentElement.scrollTop = targetOffset;  
+	    }
+	*/
 						
 	return false;
 }
+
+(function($) {
+	$.fn.preload = function(options) {
+		var opts 	= $.extend({}, $.fn.preload.defaults, options),
+			o		= $.meta ? $.extend({}, opts, this.data()) : opts;
+		return this.each(function() {
+			var $e	= $(this),
+				t	= $e.attr('rel'),
+				i	= $e.attr('href'),
+				l	= 0;
+			$('<img/>').load(function(i){
+				++l;
+				if(l==2) o.onComplete();
+			}).attr('src',i);	
+			$('<img/>').load(function(i){
+				++l;
+				if(l==2) o.onComplete();
+			}).attr('src',t);	
+		});
+	};
+	$.fn.preload.defaults = {
+		onComplete	: function(){return false;}
+	};
+})(jQuery);
