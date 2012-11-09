@@ -8,7 +8,7 @@
   background-color:#000;
   display:none;
 }
-
+/*
 .window {
   position:fixed;
   left:0;
@@ -33,7 +33,7 @@
   margin: 5px auto 0;
   overflow: hidden;
 }
-
+*/
 /*
 .window .content .sidebar {
   float: left;
@@ -50,9 +50,10 @@
   border: 1px solid black;
 }
 */
-
+/*
 #dialog {
 }
 
 #dialog2 {
 }
+*/
