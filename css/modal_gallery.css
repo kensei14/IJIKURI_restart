@@ -8,7 +8,7 @@
 	margin:-35px 0px 0px -35px;
 	opacity:0.7;
 	z-index:1000;
-	background:#fff url(../images/loader.gif) no-repeat center center;
+	background:#fff url(../src/modal/loader.gif) no-repeat center center;
 	-moz-border-radius:15px;
 	-webkit-border-radius:15px;
 	border-radius:15px;
@@ -60,11 +60,11 @@
 	opacity:0.5;
 }
 .ps_prev{
-	background:transparent url(../images/prev.png) no-repeat top center;
+	background:transparent url(../src/modal/prev.png) no-repeat top center;
 	left:-50px;
 }
 .ps_next{
-	background:transparent url(../images/next.png) no-repeat top center;
+	background:transparent url(../src/modal/next.png) no-repeat top center;
 	right:-50px;
 }
 .ps_prev:hover,
@@ -91,7 +91,7 @@ ul.ps_nav li a{
 	height:11px;
 	outline:none;
 	padding:0px 3px;
-	background:transparent url(../images/dot.png) no-repeat top center;
+	background:transparent url(../src/modal/dot.png) no-repeat top center;
 }
 ul.ps_nav li a:hover,ul.ps_nav li.selected a{
 	background-position:50% -11px;
@@ -107,7 +107,7 @@ ul.ps_nav li.ps_preview{
 	position:absolute;
 }
 ul.ps_nav li.ps_preview span{
-	background:transparent url(../images/triangle.png) no-repeat top center;
+	background:transparent url(../src/modal/triangle.png) no-repeat top center;
 	width:15px;
 	height:6px;
 	position:absolute;

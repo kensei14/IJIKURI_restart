@@ -21,17 +21,17 @@ function setContents(w, h) {
 	obj.circle = [
 		//コンテンツの値：　id initial_page final_page initial_pos final_pos width
 		new Contents($("#elem1"), 500, 1500, [300, parseInt(w*0.15)], [0,  parseInt(w*0.15)], parseInt(w*0.36)),
-		new Contents($("#elem2"), 500, 1500, [700,  parseInt(w*0.36)], [300,  parseInt(w*0.36)], parseInt(w*0.5)),
+		new Contents($("#elem2"), 500, 1500, [700,  parseInt(w*0.36)], [350,  parseInt(w*0.36)], parseInt(w*0.5)),
 		new Contents($("#elem3"), 3500, 4500, [500,  parseInt(w*0.12)], [0,  parseInt(w*0.12)], parseInt(w*0.4)),
 		new Contents($("#elem4"), 3500, 4500, [800,  parseInt(w*0.50)], [500,  parseInt(w*0.50)], parseInt(w*0.3)),
 		new Contents($("#elem5"), 6500, 7500, [600,  parseInt(w*0.3)], [100,  parseInt(w*0.3)], parseInt(w*0.35)),
 		new Contents($("#elem6"), 8500, 10000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], parseInt(w*0.3)),
 
 		/*Member List*/
-		new Contents($("#elem7"), 8800, 13000, [400,  parseInt(w*0.6)], [0,  parseInt(w*0.6)], parseInt(w*0.35)),
-		new Contents($("#elem8"), 8800, 13000, [400,  parseInt(w*0.5)], [0,  parseInt(w*0.5)], parseInt(w*0.4)),
-		new Contents($("#elem9"), 8800, 13000, [400,  parseInt(w*0.55)], [0,  parseInt(w*0.55)], parseInt(w*0.36)),
-		new Contents($("#elem10"), 8800, 13000, [400,  parseInt(w*0.45)], [0,  parseInt(w*0.45)], parseInt(w*0.38)),
+		new Contents($("#elem7"), 8800, 13000, [400,  parseInt(w*0.5)], [0,  parseInt(w*0.5)], parseInt(w*0.35)),
+		new Contents($("#elem8"), 8800, 13000, [400,  parseInt(w*0.5)], [0,  parseInt(w*0.5)], parseInt(w*0.35)),
+		new Contents($("#elem9"), 8800, 13000, [400,  parseInt(w*0.5)], [0,  parseInt(w*0.5)], parseInt(w*0.35)),
+		new Contents($("#elem10"), 8800, 13000, [400,  parseInt(w*0.5)], [0,  parseInt(w*0.5)], parseInt(w*0.35)),
 
 		/*Dummy Contents*/
 		new Contents($("#elem100"), 8800, 13000, [400,  parseInt(w*0.25)], [0,  parseInt(w*0.25)], 300)

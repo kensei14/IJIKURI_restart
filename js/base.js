@@ -56,6 +56,8 @@ $(document).ready(function() {
     setModal();
     setAnim();
     
+    $("#member_list").css({ display: 'none' });
+    
     $("#img01").ready(function() {
 		$("#global_container").fadeTo(2000, 1.0, function() { });
     });

@@ -63,6 +63,8 @@ function modal_sizing() {
 	}
 }
 
+var first_setting = false;
+
 function displayModal() {
 	//some elements..
 	var $ps_container		= $('#ps_container'),
@@ -78,7 +80,7 @@ function displayModal() {
 		current				= 0,
 		$loader				= $('#loader');
 
-	/*check if you are using a browser*/	
+	/*check if you are using a browser*/
 	var ie 				= false;
 	if ($.browser.msie) {
 		ie = true;//you are not!Anyway let's give it a try
@@ -87,7 +89,28 @@ function displayModal() {
 		$tooltip.css({
 			opacity	: 0
 		}).show();
+
+	if (!first_setting) {
+		var $firstImage = $ps_image_wrapper.find('img');
+		var firstImageHeight = $firstImage.height();
+		if (firstImageHeight >= $ps_container.height()) {
+			firstImageHeight = $ps_container.height();
+			$firstImage.css({
+				height:	firstImageHeight
+			});
+		}
+		var firstImageWidth	= $firstImage.width();
+		if (firstImageWidth >= $ps_container.width()) {
+			firstImageWidth = $ps_container.width();
+			$fistImage.css({
+				width:	firstImageWidth
+			});
+		}
+		$firstImage.css('left', ($ps_container.width() - firstImageWidth) / 2 + 'px');
 		
+		first_setting = true;
+	}
+
 	/*first preload images (thumbs and large images)*/
 	var loaded	= 0;
 	$links.each(function(i){
@@ -120,7 +143,7 @@ function displayModal() {
 			//the thumb image source
 			$thumb			= $link.find('a').attr('rel'),
 			imageLeft;
-	
+
 		//if we are not hovering the current one
 		if(currentHovered != idx){
 			//check if we will animate left->right or right->left

@@ -36,6 +36,19 @@
 	color: #777;
 }
 
+.contents .c_wrapper .description dt {
+	display: block;
+}
+
+.contents .c_wrapper .description dt {
+	font-weight: bold;
+}
+
+.contents .c_wrapper .description dd {
+	margin-left: 1em;
+	margin-bottom: 1em;
+}
+
 #member_list {
-	display: none;
+	/*display: none;*/
 }
