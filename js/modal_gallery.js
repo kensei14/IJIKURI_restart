@@ -120,7 +120,7 @@ function displayModal() {
 			//the thumb image source
 			$thumb			= $link.find('a').attr('rel'),
 			imageLeft;
-		
+	
 		//if we are not hovering the current one
 		if(currentHovered != idx){
 			//check if we will animate left->right or right->left
@@ -133,11 +133,11 @@ function displayModal() {
 				}
 			}
 			currentHovered = idx;
-			
+		
 			//the next thumb image to be shown in the tooltip
 			var $newImage = $('<img/>').css('left','0px')
 									   .attr('src',$thumb);
-			
+		
 			//if theres more than 1 image 
 			//(if we would move the mouse too fast it would probably happen)
 			//then remove the oldest one (:last)
@@ -220,32 +220,43 @@ function displayModal() {
 		
 		//the new image width. 
 		//This will be the new width of the ps_image_wrapper
+		var newImageHeight	= $newImage.height();
+		if (newImageHeight >= $ps_container.height()) {
+			newImageHeight = $ps_container.height();
+			$newImage.css({
+				height:	newImageHeight
+			});
+		}
+		
 		var newImageWidth	= $newImage.width();
-		if (newImageWidth >= $ps_container.width()) { newImageWidth = $ps_container.width(); }
-	
+		if (newImageWidth >= $ps_container.width()) {
+			newImageWidth = $ps_container.width();
+		}
+
 		//check animation direction
 		if(current > idx){
-			$newImage.css('left',-newImageWidth + 'px');
+			$newImage.css('left', -newImageWidth + 'px');
 			currentImageWidth = -newImageWidth;
-		}	
+		}
 		current = idx;
 		//animate the new width of the ps_image_wrapper 
 		//(same like new image width)
 		$ps_image_wrapper.stop().animate({
 		    width	: newImageWidth + 'px'
-		},350);
+		}, 350);
+
 		//animate the new image in
 		$newImage.stop().animate({
 		    left	: '0px'
-		},350);
+		}, 350);
 		//animate the old image out
 		$currentImage.stop().animate({
 		    left	: -currentImageWidth + 'px'
-		},350);
-	
+		}, 350);
+
 		e.preventDefault();
-	}				
-	
+	}
+
 	function nextImage(){
 		if(current < total_images){
 			$links.eq(current+1).trigger('click');
