@@ -22,6 +22,10 @@
 	width: 100%;
 }
 
+.contents .c_wrapper .description p {
+	text-indent: 1em;
+}
+
 .contents .c_wrapper .description ul li{
 	text-align: center;
 	margin-top: 1.5em;
@@ -46,7 +50,6 @@
 
 .contents .c_wrapper .description dd {
 	margin-left: 1em;
-	margin-bottom: 1em;
 }
 
 #member_list {

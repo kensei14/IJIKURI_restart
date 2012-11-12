@@ -56,12 +56,12 @@ function Contents(elem, initial_page, final_page, initial_pos, final_pos, img_wi
 	});
 
 	var d_font = 0;
-	if (id == "elem1") { d_font = img_width * 0.057 }
-	else if (id == "elem2") { d_font = img_width * 0.025 }
-	else if (id == "elem3") { d_font = img_width * 0.04 }
-	else if (id == "elem4") { d_font = img_width * 0.03 }
-	else if (id == "elem5") { d_font = img_width * 0.055 }
-	else if (id == "elem6") { d_font = img_width * 0.06 }
+	if (id == "elem1") { d_font = img_width * 0.057 }  //Concept
+	else if (id == "elem2") { d_font = img_width * 0.028 } //Background
+	else if (id == "elem3") { d_font = img_width * 0.04 }  //Members
+	else if (id == "elem4") { d_font = img_width * 0.03 }  //Members
+	else if (id == "elem5") { d_font = img_width * 0.05 } //Works
+	else if (id == "elem6") { d_font = img_width * 0.04 }  //Contact
 	else { d_font = img_width * 0.05 } //Member_listの場合全てに適用
 	if (d_font <= 20) { d_font = 20; }
 
