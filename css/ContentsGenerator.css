@@ -20,6 +20,7 @@
 
 .contents .c_wrapper .description {
 	width: 100%;
+	/*border: solid 1px green;*/
 }
 
 .contents .c_wrapper .description p {
@@ -40,18 +41,20 @@
 	color: #777;
 }
 
-.contents .c_wrapper .description dt {
-	display: block;
+.contents .c_wrapper .description dl {
+	/*border: solid 1px black;*/
 }
 
 .contents .c_wrapper .description dt {
 	font-weight: bold;
+	/*border: solid 1px blue;*/
 }
 
 .contents .c_wrapper .description dd {
 	margin-left: 1em;
+	/*border: solid 1px red;*/
 }
 
 #member_list {
-	/*display: none;*/
+	display: block;
 }
